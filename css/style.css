@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+}
+
+html{
+    font-size: 10px;
+}
+
+
+/* Définition des polices personnalisées */
+
+/* Eléments principaux de la page */
+
+/* Header */
+
+header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#titre_principal
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#logo
+{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+#logo img
+{
+    width: 59px;
+    height: 60px;
+}
+
+header h1
+{
+    font-family: 'BallparkWeiner', serif;
+    font-size: 2.5em;
+    font-weight: normal;
+    margin: 0 0 0 10px;
+}
+
+
+/* Navigation */
+
+nav ul
+{
+    list-style-type: none;
+    display: flex;
+}
+
+nav li
+{
+    margin-right: 15px;
+}
+
+nav a
+{
+    font-size: 1.3em;
+    color: #181818;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+nav a:hover
+{
+    color: #760001;
+    border-bottom: 3px solid #760001;
+}
+
+}
+
+/* Section */
+section
+{
+    display: inline-block;
+    border: 1px solid blue;
+    vertical-align: top;
+}
+
+/* Carousel*/
+.carousel{
+    align-items: center;
+    display: flex;
+    margin: 2rem auto;
+    overflow: hidden;
+    position: relative;
+    width: 300px;
+
+    &__images{
+        display: flex;
+        transform: translateX(0);
+        transition: transform 0.25s;
+
+        img{
+            border-radius: 5px
+        }
+    }
+
+    &__button{
+        background: teal;
+        border: 0;
+        border-radius: 50%;
+        color: white;
+        cursor: pointer;
+        font-size : 1.5rem;
+        font-weight: bold;
+        height: 3rem;
+        opacity: 0.25;
+        position: absolute;
+        transition: opacity 0.25s;
+        width: 3rem;
+        z-index:1;
+
+        &.previous{
+            left: 5px;
+        }
+
+        &.next{
+            right: 5px
+        }
+
+        &:hover{
+            opacity: 0.5;
+        }
+    }
+}
+
+
+
+/* Footer*/
