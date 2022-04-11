@@ -1,17 +1,23 @@
+/* Définition des polices personnalisées */
+@font-face{
+    font-family: 'MoonlessSC_Regular';
+    src: url('fonts/MoonlessSC_Regular.otf');
+}
+
+/* Eléments principaux de la page */
 * {
     box-sizing: border-box;
     margin: 0;
     padding:0;
+    color: #FF4500;
 }
 
 html{
-    font-size: 10px;
+    font-family:'MoonlessSC_Regular', Arial, serif;
+    font-size: 15px;
+     background-color: black;
 }
 
-
-/* Définition des polices personnalisées */
-
-/* Eléments principaux de la page */
 
 /* Header */
 
@@ -33,6 +39,7 @@ header
     display: flex;
     flex-direction: row;
     align-items: baseline;
+    margin: 5px 5px 0px 5px;
 }
 
 #logo img
@@ -43,7 +50,6 @@ header
 
 header h1
 {
-    font-family: 'BallparkWeiner', serif;
     font-size: 2.5em;
     font-weight: normal;
     margin: 0 0 0 10px;
@@ -76,22 +82,20 @@ nav a:hover
     color: #760001;
     border-bottom: 3px solid #760001;
 }
+/* cat meilleur film*/
 
+.meilleur__film{
+    margin: 45px 5px 45px 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    box-shadow : 6px;
 }
 
-/* Section */
-section
-{
-    display: inline-block;
-    border: 1px solid blue;
-    vertical-align: top;
-    background: blue;
-}
-section h1{
-    color: blue
-}
 /* Carousel*/
 .carousel{
+    margin: 45px 5px 45px 5px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -105,21 +109,21 @@ section h1{
 }
 button{
     border: 0;
-    border-radius: 100%;
+    border-radius: 50%;
+    background-color: #FF4500;
     color: white;
     cursor: pointer;
     font-size : 0rem;
     font-weight: bold;
-    opacity: 0.5;
     position: absolute;
-    transition: opacity 0.5s;
+    opacity: 50%
 }
 .carousel__buttonPrev{
-    left: 2px;
+    left: 70px;
 }
 
 .carousel__buttonNext{
-    right: 2px;
+    right: 10px;
 }
 
 
