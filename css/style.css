@@ -1,23 +1,24 @@
 /* Définition des polices personnalisées */
 @font-face{
     font-family: 'MoonlessSC_Regular';
-    src: url('fonts/MoonlessSC_Regular.otf');
+    src: url(fonts/MoonlessSC_Regular.otf);
 }
 
 /* Eléments principaux de la page */
-* {
-    box-sizing: border-box;
+body, html {
     margin: 0;
-    padding:0;
+    padding: 0;
+    min-height: 100%;
+    overflow: auto;
+}
+
+body {
+    font-family : 'MoonlessSC_Regular', Arial, serif;
+    padding: 50px;
+    background: black;
     color: #FF4500;
+    line-height : 1.4;
 }
-
-html{
-    font-family:'MoonlessSC_Regular', Arial, serif;
-    font-size: 15px;
-     background-color: black;
-}
-
 
 /* Header */
 
@@ -26,6 +27,7 @@ header
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    margin-bottom: 70px
 }
 
 #titre_principal
@@ -44,17 +46,16 @@ header
 
 #logo img
 {
-    width: 45px;
-    height: 30px;
+    width: 55px;
+    height: 40px;
 }
 
 header h1
 {
-    font-size: 2.5em;
+    font-size: 3.5em;
     font-weight: normal;
     margin: 0 0 0 10px;
 }
-
 
 /* Navigation */
 
@@ -64,15 +65,17 @@ nav ul
     display: flex;
 }
 
+
 nav li
 {
     margin-right: 15px;
+
 }
 
 nav a
 {
     font-size: 1.3em;
-    color: #181818;
+    color: #FF4500;
     padding-bottom: 3px;
     text-decoration: none;
 }
@@ -82,49 +85,107 @@ nav a:hover
     color: #760001;
     border-bottom: 3px solid #760001;
 }
-/* cat meilleur film*/
 
-.meilleur__film{
-    margin: 45px 5px 45px 5px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px solid black;
-    box-shadow : 6px;
-}
+/* Carousel */
 
-/* Carousel*/
-.carousel{
-    margin: 45px 5px 45px 5px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px solid black;
-    box-shadow : 6px;
-}
-.element img{
-    width: 100%;
-    height: 100%;
-
-}
-button{
-    border: 0;
-    border-radius: 50%;
-    background-color: #FF4500;
-    color: white;
-    cursor: pointer;
-    font-size : 0rem;
-    font-weight: bold;
+.titre {
     position: absolute;
-    opacity: 50%
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-bottom: 100px;
 }
-.carousel__buttonPrev{
-    left: 70px;
+.titre:hover
+{
+    color: #760001;
+    border-bottom: 3px solid #760001;
+
 }
 
-.carousel__buttonNext{
-    right: 10px;
+.item {
+    margin: 40px 10px;
+    transition: transform 0.3s;
+    transform: translate3d(0, -1px, 0);
+
+}
+.item:hover {
+    transform: translate3d(0, -10px, 0);
+}
+
+.item img{
+    display: block;
+    width: 85%;
+    height: auto;
+}
+
+.item__boby{
+    padding: 25px;
+
+}
+
+.item__titre{
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #232323;
 }
 
 
-/* Footer*/
+.item__description {
+    color: #585858;
+
+}
+
+.items {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 50px
+    }
+
+.carousel__container {
+    transition: transform 0.3s;
+    transform: translate3d(0, 0, 0);
+}
+
+.carousel__container::after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+
+.carousel__item {
+    float: left;
+}
+
+.carousel__next, .carousel__prev {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #FFF url(/img/baseline_chevron_right_black_24dp.png) center center no-repeat;
+    background-size: 20px 20px;
+    border-radius : 50%;
+    top: 50%;
+    margin-top: -45px;
+    right: 5%;
+    box-shadow: 0 15px 35px #3232321a,0 5px 15px #0000001a;
+    cursor: pointer;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.carousel__prev {
+    background-image: url(/img/baseline_chevron_left_black_24dp.png);
+    right: auto;
+    left: 10px;
+}
+
+.carousel__next:hover, .carousel__prev:hover {
+    transform: scale(1.2);
+}
+
+.carousel__next--hidden, .carousel__prev--hidden{
+    opacity:0;
+}
