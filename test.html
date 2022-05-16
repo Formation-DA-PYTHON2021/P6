@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <title>JustStreamIt</title>
+        <script src="test.js"></script>
+        <script src="http://localhost:8000/api/v1/titles"></script>
+    </head>
+    <body>
+        <header>
+            <div id="titre_principal">
+                <div id="logo">
+                    <img src="img/logoJSI.png" alt="logo de JSI"/>
+                    <h1>JustStreamIt</h1>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Catégories</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class ="container">
+            <div id="carousel1">
+                <div class="titre">Films les mieux notés</div>
+                <div id="openModal" class="modalDialog">
+                    <div>
+                        <a href="#close" title="Close" class="close">X</a>
+                        <p>synopsis : </p>
+                        <p id="title"></p>
+                        <p class="item__description" id="des">ici description titre 1</p>
+                        <p>Acteurs : </p>
+                        <p class="item__description" id="actor">liste des acteurs</p>
+                        <p>Réalisateur :   </p>
+                        <p class="item__description" id="director">réalisateur</p>
+                        <p> Année de sortie : </p>
+                        <p class="item__description" id="year">année de sortie</p>
+                    </div>
+                </div>
+                <div class = "item">
+                    <div class="item__image"><img src=""></div>
+                    <a href="#openModal" class="info"><img src="" id="img1"></a>
+                    <div class="item__body">
+                        <div class="item__title" id="titre1">Mon titre</div>
+                    </div>
+                </div>
+                <div class = "item">
+                    <div class="item__image"><img src=""></div>
+                    <a href="#openModal" class="info"><img src="" id="img2"></a>
+                    <div class="item__body">
+                        <div class="item__title" id="titre2">Mon titre</div>
+                    </div>
+                </div>
+                <div class = "item">
+                    <div class="item__image"><img src="" id="imgp"></div>
+                    <a href="#openModal" class="info"><img src="" id="img3"></a>
+                    <div class="item__body">
+                        <div class="item__title" id="titre3">Mon titre</div>
+
+                    </div>
+                </div>
+                <div class = "item">
+                    <div class="item__image"><img src=""></div>
+                    <a href="#openModal" class="info"><img src="" id="img4"></a>
+                    <div class="item__body">
+                        <div class="item__title" id="titre4">Mon titre</div>
+                        <div class="item__description">ici description</div>
+                    </div>
+                </div>
+                <div class = "item">
+                    <div class="item__image"><img src=""></div>
+                    <a href="#openModal" class="info"><img src="" id="img5"></a>
+                    <div class="item__body">
+                        <div class="item__title" id="titre5">Mon titre</div>
+                        <div class="item__description" id="titlemodal">ici description</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>A définir</p>
+        </footer>
+    </body>
+</html>

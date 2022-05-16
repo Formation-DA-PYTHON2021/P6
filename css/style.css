@@ -9,7 +9,6 @@ body, html {
     margin: 0;
     padding: 0;
     min-height: 100%;
-    overflow: auto;
 }
 
 body {
@@ -46,13 +45,13 @@ header
 
 #logo img
 {
-    width: 55px;
-    height: 40px;
+    width: 78px;
+    height: 57px;
 }
 
 header h1
 {
-    font-size: 3.5em;
+    font-size: 4.5em;
     font-weight: normal;
     margin: 0 0 0 10px;
 }
@@ -74,7 +73,7 @@ nav li
 
 nav a
 {
-    font-size: 1.3em;
+    font-size: 2em;
     color: #FF4500;
     padding-bottom: 3px;
     text-decoration: none;
@@ -90,9 +89,10 @@ nav a:hover
 
 .titre {
     position: absolute;
-    font-size: 1.5em;
+    font-size: 2.5em;
     font-weight: normal;
-    margin-bottom: 100px;
+
+
 }
 .titre:hover
 {
@@ -102,7 +102,7 @@ nav a:hover
 }
 
 .item {
-    margin: 40px 10px;
+    margin: 80px 10%;
     transition: transform 0.3s;
     transform: translate3d(0, -1px, 0);
 
@@ -115,6 +115,8 @@ nav a:hover
     display: block;
     width: 85%;
     height: auto;
+    max-width : 180px;
+    margin: 20px 20px 20px 20px;
 }
 
 .item__boby{
@@ -137,12 +139,11 @@ nav a:hover
 
 .items {
     position: relative;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .carousel {
     position: relative;
-    overflow: hidden;
     margin-bottom: 50px
     }
 
@@ -184,8 +185,62 @@ nav a:hover
 
 .carousel__next:hover, .carousel__prev:hover {
     transform: scale(1.2);
+    background-color: #FF4500;
 }
 
 .carousel__next--hidden, .carousel__prev--hidden{
     opacity:0;
+}
+
+.modalDialog {
+    position: absolute;
+    display: flex;
+    align-items : center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    padding: 20px;
+    }
+
+.modalDialog:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalDialog > div {
+        width: 400px;
+        max-width: calc(100vw - 20px);
+        max-height: calc(100vh -20px);
+        position: relative;
+        margin: 10% auto;
+        padding: 5px 20px 13px 20px;
+        border-radius: 10px;
+        background: #fc9700;
+      }
+
+.close {
+        background: #606061;
+        color: #ffffff;
+        line-height: 25px;
+        position: absolute;
+        right: -12px;
+        text-align: center;
+        top: -10px;
+        width: 24px;
+        text-decoration: none;
+        font-weight: bold;
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px;
+        -moz-box-shadow: 1px 1px 3px #000;
+        -webkit-box-shadow: 1px 1px 3px #000;
+        box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+        background: #FF4500;
 }
