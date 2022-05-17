@@ -17,7 +17,7 @@ class Carousel{
             slidesVisible: 1,
             loop: false
         }, options)
-        let children = [].slice.call(element.children)
+        let children = [].slice.call(element.children);
         this.isMobile = false
         this.currentItem = 0
         this.moveCallbacks = []
@@ -181,56 +181,39 @@ document.addEventListener('DOMContentLoaded', function (){
 })
 
 
-fetch('http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=-imdb_score&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=')
+fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=-imdb_score&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
     .then(res => res.json())
     .then(data => {
         console.log(data)
-        /*
-        document.getElementById('img1').src = data["results"][0]["image_url"]
-        document.getElementById('titre1').innerHTML = data["results"][0]["title"]
-        document.getElementById('img2').src = data["results"][1]["image_url"]
-        document.getElementById('titre2').innerHTML = data["results"][1]["title"]
-        document.getElementById('img3').src = data["results"][2]["image_url"]
-        document.getElementById('titre3').innerHTML = data["results"][2]["title"]
-        document.getElementById('img4').src = data["results"][3]["image_url"]
-        document.getElementById('titre4').innerHTML = data["results"][3]["title"]
-        document.getElementById('img5').src = data["results"][4]["image_url"]
-        document.getElementById('titre5').innerHTML = data["results"][4]["title"]*/
         for (i=0; i<5; i++){
             var elementImgBestMovie = document.getElementById('img'+(i+1));
-            var elementtitleBestMovie = document.getElementById('titre'+(i+1));
+            var elementTitleBestMovie = document.getElementById('titre'+(i+1));
             var imgBestMovie = data["results"][i]["image_url"];
             var titleBestMovie = data["results"][i]["title"];
 
             elementImgBestMovie.src = imgBestMovie;
-            elementtitleBestMovie.innerHTML = titleBestMovie;
+            elementTitleBestMovie.innerHTML = titleBestMovie;
 
-            var id = data["results"][i]["id"]
-
-        url = mainUrl+id
-        recupUrl(url)
+            var id = data["results"][i]["id"];
+        ModalData(id)
 
         }
     })
-function recupUrl(url){
-    console.log(url)
-    fetch(url)
+
+
+function ModalData(id){
+    for (i in id) {
+        var t = mainUrl+i
+        console.log(t)
+    }
+    fetch(mainUrl+id)
         .then(res => res.json())
         .then(data => {
-            console.log(url)
+            console.log(data)
             document.getElementById('title').innerHTML = data["title"];
-            document.getElementById('des').innerHTML = data["long_description"];
+            document.getElementById('descrip').innerHTML = data["long_description"];
             document.getElementById('actor').innerHTML = data["actors"];
             document.getElementById('director').innerHTML = data["directors"];
             document.getElementById('year').innerHTML = data["year"];
-        })
+    })
 }
-
-
-
-function voirLaDescription(){
-    e= document.getElementByID('des');
-    e.style.visibility = e.style.visibility=="visible" ? "hidden" : "visible";
-}
-
-
