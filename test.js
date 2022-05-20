@@ -1,5 +1,6 @@
-const mainUrl = 'http://localhost:8000/api/v1/titles/'
+const mainUrl = 'http://localhost:8000/api/v1/titles/' // url de base
 
+/* Creation d'une class Carousel*/
 class Carousel{
     /**
     *
@@ -151,6 +152,7 @@ class Carousel{
 
 }
 
+/* Creation des 4  carousel suivant la class Carousel*/
 document.addEventListener('DOMContentLoaded', function (){
     new Carousel(document.querySelector('#carousel1'), {
             slidesToScroll: 3,
@@ -180,33 +182,34 @@ document.addEventListener('DOMContentLoaded', function (){
 
 })
 
-
+/*
+recovery of basic elements to display the name and image in the carousel
+*/
 fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=-imdb_score&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
     .then(res => res.json())
     .then(data => {
         console.log(data)
         for (i=0; i<5; i++){
+            /* pictures */
             var elementImgBestMovie = document.getElementById('img'+(i+1));
-            var elementTitleBestMovie = document.getElementById('titre'+(i+1));
             var imgBestMovie = data["results"][i]["image_url"];
-            var titleBestMovie = data["results"][i]["title"];
-
             elementImgBestMovie.src = imgBestMovie;
+            /* title */
+            var elementTitleBestMovie = document.getElementById('titre'+(i+1));
+            var titleBestMovie = data["results"][i]["title"];
             elementTitleBestMovie.innerHTML = titleBestMovie;
-
-            var id = data["results"][i]["id"];
-        ModalData(id)
+            /* id */
+            var idMovie = data["results"][i]["id"]
+            var elementIdBestMovie = document.getElementById("bestMovie"+(i+1));
+            elementIdBestMovie.setAttribute("id",idMovie)
 
         }
+        console.log("elementIdBestMovie:",elementIdBestMovie.id)
     })
 
-
-function ModalData(id){
-    for (i in id) {
-        var t = mainUrl+i
-        console.log(t)
-    }
-    fetch(mainUrl+id)
+/* modal function: display of information */
+function ModalData(idMovie){
+    fetch(mainUrl+idMovie)
         .then(res => res.json())
         .then(data => {
             console.log(data)
