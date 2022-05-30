@@ -105,8 +105,9 @@ nav a:hover
     margin: 80px 10%;
     transition: transform 0.3s;
     transform: translate3d(0, -1px, 0);
-
 }
+
+
 .item:hover {
     transform: translate3d(0, -10px, 0);
 }
@@ -118,6 +119,7 @@ nav a:hover
     max-width : 180px;
     margin: 20px 20px 20px 20px;
 }
+
 
 .item__boby{
     padding: 25px;
@@ -192,14 +194,24 @@ nav a:hover
     opacity:0;
 }
 
-.modalDialog {
+
+.button {
+    background: #fc9700;
+     transform: scale(0.8);
+    background-color: #FF4500;
+}
+
+
+.OpenModal{
+    display : none;
+    width: 400px;
+    max-width: calc(100vw - 20px);
+    max-height: calc(100vh -20px);
     position: absolute;
-    display: flex;
-    align-items : center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 99999;
-    opacity: 0;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fc9700;
     -webkit-transition: opacity 400ms ease-in;
     -moz-transition: opacity 400ms ease-in;
     transition: opacity 400ms ease-in;
@@ -207,21 +219,10 @@ nav a:hover
     padding: 20px;
     }
 
-.modalDialog:target {
+.OpenModal:target {
     opacity: 1;
     pointer-events: auto;
 }
-
-.modalDialog > div {
-        width: 400px;
-        max-width: calc(100vw - 20px);
-        max-height: calc(100vh -20px);
-        position: relative;
-        margin: 10% auto;
-        padding: 5px 20px 13px 20px;
-        border-radius: 10px;
-        background: #fc9700;
-      }
 
 .close {
         background: #606061;
@@ -244,3 +245,5 @@ nav a:hover
 .close:hover {
         background: #FF4500;
 }
+
+

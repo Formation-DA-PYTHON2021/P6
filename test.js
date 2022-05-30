@@ -1,5 +1,6 @@
 const mainUrl = 'http://localhost:8000/api/v1/titles/' // url de base
 
+
 /* Creation d'une class Carousel*/
 class Carousel{
     /**
@@ -195,28 +196,58 @@ fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score
             var imgBestMovie = data["results"][i]["image_url"];
             elementImgBestMovie.src = imgBestMovie;
             /* title */
-            var elementTitleBestMovie = document.getElementById('titre'+(i+1));
-            var titleBestMovie = data["results"][i]["title"];
-            elementTitleBestMovie.innerHTML = titleBestMovie;
+            var elementTitreBestMovie = document.getElementById('titre'+(i+1));
+            var titreBestMovie = data["results"][i]["title"];
+            elementTitreBestMovie.innerHTML = titreBestMovie;
             /* id */
             var idMovie = data["results"][i]["id"]
-            var elementIdBestMovie = document.getElementById("bestMovie"+(i+1));
-            elementIdBestMovie.setAttribute("id",idMovie)
+            var elementId = document.getElementById("bestMovie"+(i+1));
+            elementId.setAttribute("id",idMovie);
+            var elementIdBestMovie = document.getElementById("id"+(i+1));
+             elementIdBestMovie.innerHTML = idMovie;
 
-        }
-        console.log("elementIdBestMovie:",elementIdBestMovie.id)
+            }
+        ModalData(1)
+        ModalData(2)
+        ModalData(3)
+        ModalData(4)
+        ModalData(5)
     })
 
 /* modal function: display of information */
-function ModalData(idMovie){
-    fetch(mainUrl+idMovie)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            document.getElementById('title').innerHTML = data["title"];
-            document.getElementById('descrip').innerHTML = data["long_description"];
-            document.getElementById('actor').innerHTML = data["actors"];
-            document.getElementById('director').innerHTML = data["directors"];
-            document.getElementById('year').innerHTML = data["year"];
-    })
+function ModalData(num){
+        var urlid = document.getElementById("id"+ num);
+        var urldata = urlid.innerHTML;
+        fetch(mainUrl + urldata)
+            .then(res => res.json())
+            .then(data => {
+                /* title*/
+                var elementTitleBestMovie = document.getElementById('title'+ num);
+                var titleBestMovie = data["title"];
+                elementTitleBestMovie.innerHTML = titleBestMovie;
+                /* description long */
+                var elementDescripBestMovie = document.getElementById('descrip'+ num);
+                var descripBestMovie = data["long_description"];
+                elementDescripBestMovie.innerHTML = descripBestMovie;
+                /* Actor */
+                var elementActorBestMovie = document.getElementById('actor'+ num);
+                var actorBestMovie = data["actors"];
+                elementActorBestMovie.innerHTML = actorBestMovie;
+                 /* Director */
+                var elementdirectorBestMovie = document.getElementById('director'+ num);
+                var directorBestMovie = data["directors"];
+                elementdirectorBestMovie.innerHTML = directorBestMovie;
+                 /* Year */
+                var elementYearBestMovie = document.getElementById('year'+ num);
+                var yearBestMovie = data["year"];
+                elementYearBestMovie.innerHTML = yearBestMovie;
+                })
+}
+function OpenModal(num) {
+  var div = document.getElementById("OpenModal" + num);
+  if (div.style.display === "none") {
+    div.style.display = "block";
+  } else {
+    div.style.display = "none";
+  }
 }
