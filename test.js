@@ -156,95 +156,143 @@ class Carousel{
 /* Creation des 4  carousel suivant la class Carousel*/
 document.addEventListener('DOMContentLoaded', function (){
     new Carousel(document.querySelector('#carousel1'), {
-            slidesToScroll: 3,
+            slidesToScroll: 2,
             slidesVisible: 4,
         })
 
 })
 document.addEventListener('DOMContentLoaded', function (){
     new Carousel(document.querySelector('#carousel2'), {
-            slidesToScroll: 3,
+            slidesToScroll: 2,
             slidesVisible: 4,
         })
 
 })
 document.addEventListener('DOMContentLoaded', function (){
     new Carousel(document.querySelector('#carousel3'), {
-            slidesToScroll: 3,
+            slidesToScroll: 2,
             slidesVisible: 4,
         })
 
 })
 document.addEventListener('DOMContentLoaded', function (){
     new Carousel(document.querySelector('#carousel4'), {
-            slidesToScroll: 3,
+            slidesToScroll: 2,
             slidesVisible: 4,
         })
 
 })
 
-/*
-recovery of basic elements to display the name and image in the carousel
-*/
-fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=-imdb_score&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-        for (i=0; i<5; i++){
-            /* pictures */
-            var elementImgBestMovie = document.getElementById('img'+(i+1));
-            var imgBestMovie = data["results"][i]["image_url"];
-            elementImgBestMovie.src = imgBestMovie;
-            /* title */
-            var elementTitreBestMovie = document.getElementById('titre'+(i+1));
-            var titreBestMovie = data["results"][i]["title"];
-            elementTitreBestMovie.innerHTML = titreBestMovie;
-            /* id */
-            var idMovie = data["results"][i]["id"]
-            var elementId = document.getElementById("bestMovie"+(i+1));
-            elementId.setAttribute("id",idMovie);
-            var elementIdBestMovie = document.getElementById("id"+(i+1));
-             elementIdBestMovie.innerHTML = idMovie;
+Container('',1)
+Container('comedy',2)
+Container('drama',3)
+Container('fantasy',4)
 
+/* carousel by category */
+function Container(category, numCarousel){
+
+    var urlPage1 = mainUrl + "?sort_by=-imdb_score&genre=" + category;
+    var urlPage2 = mainUrl  + "?sort_by=-imdb_score&genre=" + category + "&page=2";
+
+    fetch(urlPage1)
+        .then(res => res.json())
+        .then(data => {
+            var dataPage1 = data["results"];
+
+    fetch(urlPage2)
+        .then(res => res.json())
+        .then(data => {
+            var dataPage2 = data["results"];
+            var dataAll = dataPage1.concat(dataPage2);
+
+            if (category == '')
+                dataAll.shift();
+        for (i=0; i<7; i++){
+            /* pictures*/
+            var elementImgBestMovie = document.getElementById('carousel'+ numCarousel +'__img'+(i+1));
+            var imgBestMovie = dataAll[i]["image_url"];
+            elementImgBestMovie.src = imgBestMovie;
+            /* title*/
+            var elementTitreBestMovie = document.getElementById('carousel'+ numCarousel +'__titre'+(i+1));
+            var titreBestMovie = dataAll[i]["title"];
+            elementTitreBestMovie.innerHTML = titreBestMovie;
+            /* id*/
+            var idMovie = dataAll[i]["id"]
+            var elementId = document.getElementById(category+(i+1));
+            elementId.setAttribute('carousel'+ numCarousel +'__id',idMovie);
+            var elementIdBestMovie = document.getElementById('carousel'+ numCarousel +'__id'+(i+1));
+             elementIdBestMovie.innerHTML = idMovie;
             }
-        ModalData(1)
-        ModalData(2)
-        ModalData(3)
-        ModalData(4)
-        ModalData(5)
+
+            ModalData(1,1)
+            ModalData(1,2)
+            ModalData(1,3)
+            ModalData(1,4)
+            ModalData(1,5)
+            ModalData(1,5)
+            ModalData(1,7)
+            ModalData(2,1)
+            ModalData(2,2)
+            ModalData(2,3)
+            ModalData(2,4)
+            ModalData(2,5)
+            ModalData(2,6)
+            ModalData(2,7)
+            ModalData(3,1)
+            ModalData(3,2)
+            ModalData(3,3)
+            ModalData(3,4)
+            ModalData(3,5)
+            ModalData(3,5)
+            ModalData(3,7)
+            ModalData(4,1)
+            ModalData(4,2)
+            ModalData(4,3)
+            ModalData(4,4)
+            ModalData(4,5)
+            ModalData(4,6)
+            ModalData(4,7)
+        })
     })
 
+}
+
+
 /* modal function: display of information */
-function ModalData(num){
-        var urlid = document.getElementById("id"+ num);
+function ModalData(numCarousel,num){
+        var urlid = document.getElementById('carousel'+ numCarousel +'__id'+ num);
+        console.log('urlid:', urlid)
         var urldata = urlid.innerHTML;
+        console.log('urldata', urldata)
         fetch(mainUrl + urldata)
             .then(res => res.json())
             .then(data => {
                 /* title*/
-                var elementTitleBestMovie = document.getElementById('title'+ num);
+                var elementTitleBestMovie = document.getElementById('carousel'+ numCarousel +'__title'+ num);
                 var titleBestMovie = data["title"];
                 elementTitleBestMovie.innerHTML = titleBestMovie;
                 /* description long */
-                var elementDescripBestMovie = document.getElementById('descrip'+ num);
+                var elementDescripBestMovie = document.getElementById('carousel'+ numCarousel +'__descrip'+ num);
                 var descripBestMovie = data["long_description"];
                 elementDescripBestMovie.innerHTML = descripBestMovie;
                 /* Actor */
-                var elementActorBestMovie = document.getElementById('actor'+ num);
+                var elementActorBestMovie = document.getElementById('carousel'+ numCarousel +'__actor'+ num);
                 var actorBestMovie = data["actors"];
                 elementActorBestMovie.innerHTML = actorBestMovie;
                  /* Director */
-                var elementdirectorBestMovie = document.getElementById('director'+ num);
+                var elementdirectorBestMovie = document.getElementById('carousel'+ numCarousel +'__director'+ num);
                 var directorBestMovie = data["directors"];
                 elementdirectorBestMovie.innerHTML = directorBestMovie;
                  /* Year */
-                var elementYearBestMovie = document.getElementById('year'+ num);
+                var elementYearBestMovie = document.getElementById('carousel'+ numCarousel +'__year'+ num);
                 var yearBestMovie = data["year"];
                 elementYearBestMovie.innerHTML = yearBestMovie;
                 })
 }
-function OpenModal(num) {
-  var div = document.getElementById("OpenModal" + num);
+
+/* modal function: open modal */
+function OpenModal(numCarousel, num) {
+  var div = document.getElementById('carousel'+ numCarousel +'__openModal' + num);
   if (div.style.display === "none") {
     div.style.display = "block";
   } else {
