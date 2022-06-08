@@ -1,7 +1,7 @@
 const mainUrl = 'http://localhost:8000/api/v1/titles/' // url de base
 
 
-/* Create Carousel*/
+/* Creation d'une class Carousel*/
 class Carousel{
     /**
     *
@@ -19,7 +19,7 @@ class Carousel{
             slidesVisible: 1,
             loop: false
         }, options)
-        let children = [].slice.call(element.children)
+        let children = [].slice.call(element.children);
         this.isMobile = false
         this.currentItem = 0
         this.moveCallbacks = []
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function (){
 
 })
 
-
+Container('',0)
 Container('',1)
 Container('comedy',2)
 Container('drama',3)
@@ -225,6 +225,7 @@ function Container(category, numCarousel){
              elementIdBestMovie.innerHTML = idMovie;
             }
 
+            ModalData(0,1)
             ModalData(1,1)
             ModalData(1,2)
             ModalData(1,3)
@@ -262,9 +263,8 @@ function Container(category, numCarousel){
 /* modal function: display of information */
 function ModalData(numCarousel,num){
         var urlid = document.getElementById('carousel'+ numCarousel +'__id'+ num);
-        console.log('urlid:', urlid)
         var urldata = urlid.innerHTML;
-        console.log('urldata', urldata)
+
         fetch(mainUrl + urldata)
             .then(res => res.json())
             .then(data => {
@@ -275,6 +275,10 @@ function ModalData(numCarousel,num){
                 /* description long */
                 var elementDescripBestMovie = document.getElementById('carousel'+ numCarousel +'__descrip'+ num);
                 var descripBestMovie = data["long_description"];
+                elementDescripBestMovie.innerHTML = descripBestMovie;
+                /* description */
+                var elementDescripBestMovie = document.getElementById('carousel'+ numCarousel +'__descripcourt'+ num);
+                var descripBestMovie = data["description"];
                 elementDescripBestMovie.innerHTML = descripBestMovie;
                 /* Actor */
                 var elementActorBestMovie = document.getElementById('carousel'+ numCarousel +'__actor'+ num);
