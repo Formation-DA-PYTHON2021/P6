@@ -325,7 +325,6 @@ function ModalData(numCarousel,num){
                 elementDescripCourteMovie.innerHTML =descripCourteMovie;*/
                 })
 }
-
 /* modal function: open modal */
 function OpenModal(numCarousel, num) {
   var div = document.getElementById('carousel'+ numCarousel +'__openModal' + num);
