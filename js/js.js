@@ -210,19 +210,19 @@ function Container(category, numCarousel){
                 dataAll.shift();
         for (i=0; i<7; i++){
             /* pictures*/
-            var elementImgBestMovie = document.getElementById('carousel'+ numCarousel +'__img'+(i+1));
-            var imgBestMovie = dataAll[i]["image_url"];
-            elementImgBestMovie.src = imgBestMovie;
+            var elementImgMovie = document.getElementById('carousel'+ numCarousel +'__img'+(i+1));
+            var imgMovie = dataAll[i]["image_url"];
+            elementImgMovie.src = imgMovie;
             /* title*/
-            var elementTitreBestMovie = document.getElementById('carousel'+ numCarousel +'__titre'+(i+1));
-            var titreBestMovie = dataAll[i]["title"];
-            elementTitreBestMovie.innerHTML = titreBestMovie;
+            var elementTitreMovie = document.getElementById('carousel'+ numCarousel +'__titre'+(i+1));
+            var titreMovie = dataAll[i]["title"];
+            elementTitreMovie.innerHTML = titreMovie;
             /* id*/
             var idMovie = dataAll[i]["id"]
             var elementId = document.getElementById(category+(i+1));
             elementId.setAttribute('carousel'+ numCarousel +'__id',idMovie);
-            var elementIdBestMovie = document.getElementById('carousel'+ numCarousel +'__id'+(i+1));
-             elementIdBestMovie.innerHTML = idMovie;
+            var elementIdMovie = document.getElementById('carousel'+ numCarousel +'__id'+(i+1));
+             elementIdMovie.innerHTML = idMovie;
             }
 
             ModalData(0,1)
@@ -231,7 +231,7 @@ function Container(category, numCarousel){
             ModalData(1,3)
             ModalData(1,4)
             ModalData(1,5)
-            ModalData(1,5)
+            ModalData(1,6)
             ModalData(1,7)
             ModalData(2,1)
             ModalData(2,2)
@@ -245,7 +245,7 @@ function Container(category, numCarousel){
             ModalData(3,3)
             ModalData(3,4)
             ModalData(3,5)
-            ModalData(3,5)
+            ModalData(3,6)
             ModalData(3,7)
             ModalData(4,1)
             ModalData(4,2)
@@ -268,30 +268,61 @@ function ModalData(numCarousel,num){
         fetch(mainUrl + urldata)
             .then(res => res.json())
             .then(data => {
+                /* image*/
+                var elementImgMovie = document.getElementById('carousel'+ numCarousel +'__image'+ num);
+                var imgMovie = data["image_url"];
+                elementImgMovie.src = imgMovie;
                 /* title*/
-                var elementTitleBestMovie = document.getElementById('carousel'+ numCarousel +'__title'+ num);
-                var titleBestMovie = data["title"];
-                elementTitleBestMovie.innerHTML = titleBestMovie;
-                /* description long */
-                var elementDescripBestMovie = document.getElementById('carousel'+ numCarousel +'__descrip'+ num);
-                var descripBestMovie = data["long_description"];
-                elementDescripBestMovie.innerHTML = descripBestMovie;
-                /* description */
-                var elementDescripBestMovie = document.getElementById('carousel'+ numCarousel +'__descripcourt'+ num);
-                var descripBestMovie = data["description"];
-                elementDescripBestMovie.innerHTML = descripBestMovie;
+                var elementTitleMovie = document.getElementById('carousel'+ numCarousel +'__title'+ num);
+                var titleMovie = data["title"];
+                elementTitleMovie.innerHTML = titleMovie;
+                /* genre*/
+                var elementGenreMovie = document.getElementById('carousel'+ numCarousel +'__genre'+ num);
+                var genreMovie = data["genres"];
+                elementGenreMovie.innerHTML = genreMovie;
+                /* date published */
+                var elementYearMovie = document.getElementById('carousel'+ numCarousel +'__year'+ num);
+                var yearMovie = data["year"];
+                elementYearMovie.innerHTML = yearMovie;
+                /* rated*/
+                var elementRatedMovie = document.getElementById('carousel'+ numCarousel +'__rated'+ num);
+                var ratedMovie = data["rated"];
+                elementRatedMovie.innerHTML = ratedMovie;
+                /* score Imdb */
+                var elementImdbMovie = document.getElementById('carousel'+ numCarousel +'__imdb'+ num);
+                var imdbMovie = data["imdb_score"];
+                elementImdbMovie.innerHTML = imdbMovie;
+                /* Director */
+                var elementDirectorMovie = document.getElementById('carousel'+ numCarousel +'__director'+ num);
+                var directorMovie = data["directors"];
+                elementDirectorMovie.innerHTML = directorMovie;
                 /* Actor */
-                var elementActorBestMovie = document.getElementById('carousel'+ numCarousel +'__actor'+ num);
-                var actorBestMovie = data["actors"];
-                elementActorBestMovie.innerHTML = actorBestMovie;
-                 /* Director */
-                var elementdirectorBestMovie = document.getElementById('carousel'+ numCarousel +'__director'+ num);
-                var directorBestMovie = data["directors"];
-                elementdirectorBestMovie.innerHTML = directorBestMovie;
-                 /* Year */
-                var elementYearBestMovie = document.getElementById('carousel'+ numCarousel +'__year'+ num);
-                var yearBestMovie = data["year"];
-                elementYearBestMovie.innerHTML = yearBestMovie;
+                var elementActorMovie = document.getElementById('carousel'+ numCarousel +'__actor'+ num);
+                var actorMovie = data["actors"];
+                elementActorMovie.innerHTML = actorMovie;
+                /* duration */
+                var elementDurationMovie = document.getElementById('carousel'+ numCarousel +'__duration'+ num);
+                var durationMovie = data["duration"];
+                elementDurationMovie.innerHTML = durationMovie + "  min";
+                /* country*/
+                var elementCountryMovie = document.getElementById('carousel'+ numCarousel +'__country'+ num);
+                var countryMovie = data["countries"];
+                elementCountryMovie.innerHTML = countryMovie;
+                /* Box Office*/
+                var elementBoxOfficeMovie = document.getElementById('carousel'+ numCarousel +'__boxOffice'+ num);
+                var boxOfficeMovie = data["worldwide_gross_income"];
+                if (boxOfficeMovie == null)
+                    elementBoxOfficeMovie.innerHTML = "N/A";  // placeholder for unspecified box-office
+                else
+                    elementBoxOfficeMovie.innerHTML = boxOfficeMovie;
+                /* description long */
+                var elementDescripMovie = document.getElementById('carousel'+ numCarousel +'__descrip'+ num);
+                var descripMovie = data["long_description"];
+                elementDescripMovie.innerHTML = descripMovie;
+                /* description
+                var elementDescripCourteMovie = document.getElementById('carousel'+ numCarousel +'__descripcourte'+ num);
+                var descripCourteMovie = data["description"];
+                elementDescripCourteMovie.innerHTML =descripCourteMovie;*/
                 })
 }
 

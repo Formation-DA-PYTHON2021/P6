@@ -217,10 +217,16 @@ nav a:hover
   padding: 15px;
   position: absolute;
   top: 50%;
-  right: 60%
-
+  width : 90%;
 }
 
+img#modal1__img1{
+display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin: 5px 5px 0px 5px;
+    width: 40%;
+}
 
 .close {
         background: #606061;
@@ -249,3 +255,6 @@ nav a:hover
     padding-top : 7%;
 }
 
+.button:hover {
+    background: #FF4500;
+}
