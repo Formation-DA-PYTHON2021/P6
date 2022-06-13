@@ -268,6 +268,7 @@ function ModalData(numCarousel,num){
         fetch(mainUrl + urldata)
             .then(res => res.json())
             .then(data => {
+            console.log(data);
                 /* image*/
                 var elementImgMovie = document.getElementById('carousel'+ numCarousel +'__image'+ num);
                 var imgMovie = data["image_url"];
@@ -307,22 +308,26 @@ function ModalData(numCarousel,num){
                 /* country*/
                 var elementCountryMovie = document.getElementById('carousel'+ numCarousel +'__country'+ num);
                 var countryMovie = data["countries"];
-                elementCountryMovie.innerHTML = countryMovie;
+                if (countryMovie == null) {
+                    elementCountryMovie.innerHTML = "N/A";
+                } else {
+                    elementCountryMovie.innerHTML = countryMovie;}
                 /* Box Office*/
                 var elementBoxOfficeMovie = document.getElementById('carousel'+ numCarousel +'__boxOffice'+ num);
                 var boxOfficeMovie = data["worldwide_gross_income"];
-                if (boxOfficeMovie == null)
+                if (boxOfficeMovie == null){
                     elementBoxOfficeMovie.innerHTML = "N/A";  // placeholder for unspecified box-office
-                else
+                } else {
                     elementBoxOfficeMovie.innerHTML = boxOfficeMovie;
+                   }
                 /* description long */
                 var elementDescripMovie = document.getElementById('carousel'+ numCarousel +'__descrip'+ num);
                 var descripMovie = data["long_description"];
                 elementDescripMovie.innerHTML = descripMovie;
-                /* description
-                var elementDescripCourteMovie = document.getElementById('carousel'+ numCarousel +'__descripcourte'+ num);
+                /* description*/
+                var elementDescripCourteMovie = document.getElementById('carousel'+ numCarousel +'__descripcourte'+ num)
                 var descripCourteMovie = data["description"];
-                elementDescripCourteMovie.innerHTML =descripCourteMovie;*/
+                elementDescripCourteMovie.innerHTML =descripCourteMovie;
                 })
 }
 /* modal function: open modal */
