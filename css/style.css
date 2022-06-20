@@ -139,17 +139,7 @@ nav a:hover
     color: #585858;
 }
 
-.modal__categorie{
-    font-weight: bold;
-    text-decoration: underline;
 
-}
-
-.modal__titre{
-    font-weight: bold;
-    color: #585858;
-
-}
 
 .items {
     position: relative;
@@ -217,16 +207,8 @@ nav a:hover
   padding: 15px;
   position: absolute;
   top: 50%;
-  width : 90%;
 
-}
 
-img#modal1__img1{
-display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    margin: 5px 5px 0px 5px;
-    width: 40%;
 }
 
 .close {
@@ -258,4 +240,16 @@ display: flex;
 
 .button:hover {
     background: #FF4500;
+}
+
+.modal__categorie{
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+
+.modal__titre{
+    font-weight: bold;
+    color: #585858;
+
 }

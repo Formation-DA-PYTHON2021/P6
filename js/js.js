@@ -268,7 +268,6 @@ function ModalData(numCarousel,num){
         fetch(mainUrl + urldata)
             .then(res => res.json())
             .then(data => {
-            console.log(data);
                 /* image*/
                 var elementImgMovie = document.getElementById('carousel'+ numCarousel +'__image'+ num);
                 var imgMovie = data["image_url"];
